@@ -1,3 +1,37 @@
+const initialCards = [
+  {
+    name: "Архыз",
+    link:
+      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
+  },
+  {
+    name: "Челябинская область",
+    link:
+      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
+  },
+  {
+    name: "Иваново",
+    link:
+      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
+  },
+  {
+    name: "Камчатка",
+    link:
+      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
+  },
+  {
+    name: "Холмогорский район",
+    link:
+      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
+  },
+  {
+    name: "Байкал",
+    link:
+      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
+  },
+];
+
+
 //Modals
 const editProfileModal = document.querySelector(".popup_type_edit-profile");
 const addCardsModal = document.querySelector(".popup_type_add-cards");
@@ -28,6 +62,9 @@ const closeAddCardsModalModalButton = addCardsModal.querySelector(
   ".popup__close-btn"
 );
 const closeImageModalButton = imageModal.querySelector(".popup__close-btn");
+
+
+
 
 //Открываем и закрываем модалки
 function openModalWindow(modalWindow) {
@@ -96,42 +133,9 @@ closeAddCardsModalModalButton.addEventListener("click", () => {
 popup.addEventListener("submit", saveInfo);
 addCardsModal.addEventListener("submit", addCardSubmitHandler);
 
-const initialCards = [
-  {
-    name: "Архыз",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
 
-const cardTemplate = document
-  .querySelector(".template-card")
-  .content.querySelector(".grid__item");
+
+const cardTemplate = document.querySelector(".template-card").content.querySelector(".grid__item");
 
 function handleLikeClick(gridLikeButton) {
   gridLikeButton.classList.toggle("grid__like_active-btn");
