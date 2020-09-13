@@ -55,7 +55,7 @@ const initialCards = [
   //
   const imageModalSrc = imageModal.querySelector(".popup__image");
   const imageModalTitle = imageModal.querySelector(".popup__title");
-  
+
   
   class Card {
     // в конструкторе будут динамические данные,
@@ -108,33 +108,39 @@ const initialCards = [
         .closest(".grid__item")
         .remove();
     }
+
+    handleOpenPopup(){
+        imageModalSrc.src = this._image;
+        imageModalTitle.textContent =  this._title;
+        imageModal.classList.add("popup_is-open");
+    }
+
+    handleClosePopup(){
+        imageModalSrc.src = "";
+        imageModalTitle.textContent =  "";
+        imageModal.classList.remove("popup_is-open");
+      }
   
 
     setEventListeners() {
-
-        this._element.querySelector(".grid__image").addEventListener('click', () => {
-            this._handleOpenPopup();
-          });
 
         this._element.querySelector(".grid__like-btn").addEventListener('click', () => {
             this.handleLikeClick();
           });
 
-          this._element.querySelector(".grid__delete-btn").addEventListener('click', () => {
+        this._element.querySelector(".grid__delete-btn").addEventListener('click', () => {
             this. handleDeleteClick();
           });
 
+        this._element.querySelector(".grid__image").addEventListener('click', () => {
+       this.handleOpenPopup();
+        });
+
+        imageModal.querySelector(".popup__close-btn").addEventListener('click', () => {
+            this.handleClosePopup();
+             });
     }
   
-    //   openModalWindow() {
-    //     imageModalSrc.src = this._image;
-    //     imageModalTitle.textContent =  this._title;
-    //     imageModal.classList.add("popup_is-open");
-    //   }
-  
-    //   closeModalWindow() {
-    //     imageModal.classList.remove("popup_is-open");
-    //   }
   }
   
   initialCards.forEach((item) => {

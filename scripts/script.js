@@ -141,7 +141,7 @@ function handleLikeClick(gridLikeButton) {
   gridLikeButton.classList.toggle("grid__like_active-btn");
 }
 
-function handleDeleteClick() {
+function handleDeleteClick(event) {
   event.target.closest(".grid__item").remove();
 }
 
