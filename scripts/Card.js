@@ -38,13 +38,13 @@
       return this._element;
     }
   
-    handleLikeClick() {
+    _handleLikeClick() {
       this._element
         .querySelector(".grid__like-btn")
         .classList.toggle("grid__like_active-btn");
     }
   
-    handleDeleteClick() {
+    _handleDeleteClick() {
       this._element
         .querySelector(".grid__delete-btn")
         .closest(".grid__item")
@@ -67,11 +67,11 @@
     setEventListeners() {
 
         this._element.querySelector(".grid__like-btn").addEventListener('click', () => {
-            this.handleLikeClick();
+            this._handleLikeClick();
           });
 
         this._element.querySelector(".grid__delete-btn").addEventListener('click', () => {
-            this.handleDeleteClick();
+            this._handleDeleteClick();
           });
 
       //   this._element.querySelector(".grid__image").addEventListener('click', () => {
