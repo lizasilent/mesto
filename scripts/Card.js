@@ -1,62 +1,4 @@
-const initialCards = [
-    {
-      name: "Архыз",
-      link:
-        "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-    },
-    {
-      name: "Челябинская область",
-      link:
-        "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-    },
-    {
-      name: "Иваново",
-      link:
-        "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-    },
-    {
-      name: "Камчатка",
-      link:
-        "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-    },
-    {
-      name: "Холмогорский район",
-      link:
-        "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-    },
-    {
-      name: "Байкал",
-      link:
-        "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-    },
-  ];
-  
-  // Разметка
-  const list = document.querySelector(".grid__template");
-  const gridElement = list.querySelector(".grid__item");
-  
-  //Модалки
-  const editProfileModal = document.querySelector(".popup_type_edit-profile");
-  const addCardsModal = document.querySelector(".popup_type_add-cards");
-  const imageModal = document.querySelector(".popup_type_grid-img");
-  const popup = document.querySelector(".popup__form");
-  
-  //Buttons
-  const editProfileButton = document.querySelector(".profile__edit-btn");
-  const closeEditProfileModalButton = editProfileModal.querySelector(
-    ".popup__close-btn"
-  );
-  const addCardButton = document.querySelector(".profile__add-btn");
-  const closeAddCardsModalModalButton = addCardsModal.querySelector(
-    ".popup__close-btn"
-  );
-  const closeImageModalButton = imageModal.querySelector(".popup__close-btn");
-  
-  //
-  const imageModalSrc = imageModal.querySelector(".popup__image");
-  const imageModalTitle = imageModal.querySelector(".popup__title");
 
-  
   class Card {
     // в конструкторе будут динамические данные,
     // для каждого экземпляра свои
@@ -109,17 +51,17 @@ const initialCards = [
         .remove();
     }
 
-    handleOpenPopup(){
-        imageModalSrc.src = this._image;
-        imageModalTitle.textContent =  this._title;
-        imageModal.classList.add("popup_is-open");
-    }
+    // handleOpenPopup(){
+    //     imageModalSrc.src = this._image;
+    //     imageModalTitle.textContent =  this._title;
+    //     imageModal.classList.add("popup_is-open");
+    // }
 
-    handleClosePopup(){
-        imageModalSrc.src = "";
-        imageModalTitle.textContent =  "";
-        imageModal.classList.remove("popup_is-open");
-      }
+    // handleClosePopup(){
+    //     imageModalSrc.src = "";
+    //     imageModalTitle.textContent =  "";
+    //     imageModal.classList.remove("popup_is-open");
+    //   }
   
 
     setEventListeners() {
@@ -129,16 +71,16 @@ const initialCards = [
           });
 
         this._element.querySelector(".grid__delete-btn").addEventListener('click', () => {
-            this. handleDeleteClick();
+            this.handleDeleteClick();
           });
 
-        this._element.querySelector(".grid__image").addEventListener('click', () => {
-       this.handleOpenPopup();
-        });
+      //   this._element.querySelector(".grid__image").addEventListener('click', () => {
+      //  this.handleOpenPopup();
+      //   });
 
-        imageModal.querySelector(".popup__close-btn").addEventListener('click', () => {
-            this.handleClosePopup();
-             });
+      //   imageModal.querySelector(".popup__close-btn").addEventListener('click', () => {
+      //       this.handleClosePopup();
+      //        });
     }
   
   }

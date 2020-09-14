@@ -48,6 +48,7 @@ const inputDescription = editProfileModal.querySelector(
 const inputPlace = addCardsModal.querySelector(".popup__text_place");
 const inputImageSource = addCardsModal.querySelector(".popup__source");
 const list = document.querySelector(".grid__template");
+const gridElement = list.querySelector(".grid__item");
 const imageModalSrc = imageModal.querySelector(".popup__image");
 const imageModalTitle = imageModal.querySelector(".popup__title");
 const addCardsForm = addCardsModal.querySelector(".popup__form_add-cards");
@@ -62,7 +63,6 @@ const closeAddCardsModalModalButton = addCardsModal.querySelector(
   ".popup__close-btn"
 );
 const closeImageModalButton = imageModal.querySelector(".popup__close-btn");
-
 
 
 
@@ -135,55 +135,55 @@ addCardsModal.addEventListener("submit", addCardSubmitHandler);
 
 
 
-const cardTemplate = document.querySelector(".template-card").content.querySelector(".grid__item");
+// const cardTemplate = document.querySelector(".template-card").content.querySelector(".grid__item");
 
-function handleLikeClick(gridLikeButton) {
-  gridLikeButton.classList.toggle("grid__like_active-btn");
-}
+// function handleLikeClick(gridLikeButton) {
+//   gridLikeButton.classList.toggle("grid__like_active-btn");
+// }
 
-function handleDeleteClick(event) {
-  event.target.closest(".grid__item").remove();
-}
+// function handleDeleteClick(event) {
+//   event.target.closest(".grid__item").remove();
+// }
 
-function createImageModal(src, textcontent) {
-  imageModalSrc.src = src;
-  imageModalTitle.textContent = textcontent; 
-}
+// function createImageModal(src, textcontent) {
+//   imageModalSrc.src = src;
+//   imageModalTitle.textContent = textcontent; 
+// }
 
-function createCard(data) {
-  const gridElement = cardTemplate.cloneNode(true);
-  const gridText = gridElement.querySelector(".grid__text");
-  const gridImage = gridElement.querySelector(".grid__image");
-  const gridLikeButton = gridElement.querySelector(".grid__like-btn");
-  const gridDeleteButton = gridElement.querySelector(".grid__delete-btn");
+// function createCard(data) {
+//   const gridElement = cardTemplate.cloneNode(true);
+//   const gridText = gridElement.querySelector(".grid__text");
+//   const gridImage = gridElement.querySelector(".grid__image");
+//   const gridLikeButton = gridElement.querySelector(".grid__like-btn");
+//   const gridDeleteButton = gridElement.querySelector(".grid__delete-btn");
 
-  gridText.textContent = data.name;
-  gridImage.src = data.link;
+//   gridText.textContent = data.name;
+//   gridImage.src = data.link;
 
-  gridLikeButton.addEventListener("click", () => {
-    handleLikeClick(gridLikeButton);
-  });
-  gridDeleteButton.addEventListener("click", () => {
-    handleDeleteClick(gridDeleteButton);
-  });
+//   gridLikeButton.addEventListener("click", () => {
+//     handleLikeClick(gridLikeButton);
+//   });
+//   gridDeleteButton.addEventListener("click", () => {
+//     handleDeleteClick(gridDeleteButton);
+//   });
 
 
-  gridImage.addEventListener("click", () => {
-    openModalWindow(imageModal);
-    createImageModal(data.link, data.name);
-  });
-  closeImageModalButton.addEventListener("click", () => {
-    closeModalWindow(imageModal);
-  });
+//   gridImage.addEventListener("click", () => {
+//     openModalWindow(imageModal);
+//     createImageModal(data.link, data.name);
+//   });
+//   closeImageModalButton.addEventListener("click", () => {
+//     closeModalWindow(imageModal);
+//   });
 
-  return gridElement;
-}
+//   return gridElement;
+// }
 
-function renderCard(data) {
-  list.prepend(createCard(data));
-}
+// function renderCard(data) {
+//   list.prepend(createCard(data));
+// }
 
-initialCards.forEach((data) => {
-  renderCard(data);
-});
+// initialCards.forEach((data) => {
+//   renderCard(data);
+// });
 
