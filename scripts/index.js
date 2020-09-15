@@ -1,3 +1,7 @@
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
+
+
 const initialCards = [
   {
     name: "Архыз",
@@ -30,6 +34,15 @@ const initialCards = [
       "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
   },
 ];
+
+
+const settings = {
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__submit-btn",
+  inactiveButtonClass: "popup__submit-btn_disabled",
+  inputErrorClass: "popup__input_invalid",
+  errorClass: "popup__error_is-active",
+};
 
 
 //Modals
@@ -134,47 +147,42 @@ popup.addEventListener("submit", saveInfo);
 addCardsModal.addEventListener("submit", addCardSubmitHandler);
 
 
-
-// const cardTemplate = document.querySelector(".template-card").content.querySelector(".grid__item");
-
-// function handleLikeClick(gridLikeButton) {
-//   gridLikeButton.classList.toggle("grid__like_active-btn");
-// }
-
-// function handleDeleteClick(event) {
-//   event.target.closest(".grid__item").remove();
-// }
-
 // function createImageModal(src, textcontent) {
 //   imageModalSrc.src = src;
 //   imageModalTitle.textContent = textcontent; 
 // }
 
-// function createCard(data) {
-//   const gridElement = cardTemplate.cloneNode(true);
-//   const gridText = gridElement.querySelector(".grid__text");
-//   const gridImage = gridElement.querySelector(".grid__image");
-//   const gridLikeButton = gridElement.querySelector(".grid__like-btn");
-//   const gridDeleteButton = gridElement.querySelector(".grid__delete-btn");
+initialCards.forEach((item) => {
+  const card = new Card(item, ".template-card");
+  const cardElement = card.generateCard();
+  list.append(cardElement);
+});
 
-//   gridText.textContent = data.name;
-//   gridImage.src = data.link;
 
-//   gridLikeButton.addEventListener("click", () => {
-//     handleLikeClick(gridLikeButton);
-//   });
-//   gridDeleteButton.addEventListener("click", () => {
-//     handleDeleteClick(gridDeleteButton);
-//   });
 
+const addFormValidator = new FormValidator(settings, popup);
+addFormValidator.enableValidation();
+
+
+
+
+
+// function openImage() {
+//   imageModalSrc.src = src;
+//   imageModalTitle.textContent = textcontent; 
 
 //   gridImage.addEventListener("click", () => {
-//     openModalWindow(imageModal);
-//     createImageModal(data.link, data.name);
-//   });
-//   closeImageModalButton.addEventListener("click", () => {
-//     closeModalWindow(imageModal);
-//   });
+//         openModalWindow(imageModal);
+//         createImageModal(data.link, data.name);
+//       });
+//       closeImageModalButton.addEventListener("click", () => {
+//         closeModalWindow(imageModal);
+//       });
+// }
+
+// openImage();
+
+//  
 
 //   return gridElement;
 // }

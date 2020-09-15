@@ -12,11 +12,12 @@ const showInputError = (
   formElement,
   inputElement,
   inputErrorClass,
-  errorClass
+  errorClass,
+  errorMessage
 ) => {
   const errorElement = formElement.querySelector(`#${inputElement.name}-error`);
   inputElement.classList.add(inputErrorClass);
-  errorElement.textContent = inputElement.validationMessage;
+  errorElement.textContent = errorMessage;
   errorElement.classList.add(errorClass);
 };
 
