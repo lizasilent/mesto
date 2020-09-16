@@ -47,6 +47,7 @@ const imageModalTitle = imageModal.querySelector(".popup__title");
     }
 
       _handleOpenPopup(){
+        
         imageModalSrc.src = this._image;
         imageModalTitle.textContent =  this._title;
         imageModal.classList.add("popup_is-open");
@@ -57,6 +58,8 @@ const imageModalTitle = imageModal.querySelector(".popup__title");
         imageModalTitle.textContent =  "";
         imageModal.classList.remove("popup_is-open");
       }
+
+
 
     _setEventListeners() {
 
@@ -71,8 +74,8 @@ const imageModalTitle = imageModal.querySelector(".popup__title");
           this._element.querySelector(".grid__image").addEventListener('click', () => {
              this._handleOpenPopup();
               });
-      
-          imageModal.querySelector(".popup__close-btn").addEventListener('click', () => {
+
+            imageModal.querySelector(".popup__close-btn").addEventListener('click', () => {
             this._handleClosePopup();
                    });
 

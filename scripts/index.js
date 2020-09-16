@@ -78,7 +78,6 @@ const closeAddCardsModalModalButton = addCardsModal.querySelector(
 const closeImageModalButton = imageModal.querySelector(".popup__close-btn");
 
 
-
 //Открываем и закрываем модалки
 function openModalWindow(modalWindow) {
   modalWindow.classList.add("popup_is-open");
@@ -107,6 +106,7 @@ editProfileModal.addEventListener("click", closeModalByOverlay);
 addCardsModal.addEventListener("click", closeModalByOverlay);
 imageModal.addEventListener("click", closeModalByOverlay);
 
+
 //Сохраняем введенную информацию
 
 inputName.value = userName.textContent;
@@ -120,12 +120,28 @@ function saveInfo(event) {
   closeModalWindow(editProfileModal);
 }
 
+// Создаем карточки 
+
+function createNewCard(data) {
+  const card = new Card(data, ".template-card");
+  const cardElement = card.generateCard();
+  list.prepend(cardElement);
+}
+
+
 function addCardSubmitHandler(event) {
   event.preventDefault();
-  renderCard({ name: inputPlace.value, link: inputImageSource.value });
+  createNewCard({name:inputPlace.value, link:inputImageSource.value});
   closeModalWindow(addCardsModal);
   addCardsForm.reset();
+  
 }
+
+initialCards.forEach((data) => {
+  createNewCard(data)
+});
+
+
 
 // Тыкаем на кнопки для модалки edit
 editProfileButton.addEventListener("click", () => {
@@ -152,11 +168,7 @@ addCardsModal.addEventListener("submit", addCardSubmitHandler);
 //   imageModalTitle.textContent = textcontent; 
 // }
 
-initialCards.forEach((item) => {
-  const card = new Card(item, ".template-card");
-  const cardElement = card.generateCard();
-  list.append(cardElement);
-});
+
 
 
 
