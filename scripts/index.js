@@ -1,6 +1,5 @@
-import Card from './Card.js';
-import FormValidator from './FormValidator.js';
-
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
 
 const initialCards = [
   {
@@ -35,7 +34,6 @@ const initialCards = [
   },
 ];
 
-
 const settings = {
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__submit-btn",
@@ -43,7 +41,6 @@ const settings = {
   inputErrorClass: "popup__input_invalid",
   errorClass: "popup__error_is-active",
 };
-
 
 //Modals
 const editProfileModal = document.querySelector(".popup_type_edit-profile");
@@ -77,11 +74,10 @@ const closeAddCardsModalModalButton = addCardsModal.querySelector(
 );
 const closeImageModalButton = imageModal.querySelector(".popup__close-btn");
 
-
 //Открываем и закрываем модалки
 function openModalWindow(modalWindow) {
   modalWindow.classList.add("popup_is-open");
-  document.addEventListener("keydown", closeModalByEsc); 
+  document.addEventListener("keydown", closeModalByEsc);
 }
 
 function closeModalWindow(modalWindow) {
@@ -106,12 +102,10 @@ editProfileModal.addEventListener("click", closeModalByOverlay);
 addCardsModal.addEventListener("click", closeModalByOverlay);
 imageModal.addEventListener("click", closeModalByOverlay);
 
-
 //Сохраняем введенную информацию
 
 inputName.value = userName.textContent;
 inputDescription.value = userInformation.textContent;
-
 
 function saveInfo(event) {
   event.preventDefault();
@@ -120,28 +114,24 @@ function saveInfo(event) {
   closeModalWindow(editProfileModal);
 }
 
-// Создаем карточки 
+// Создаем карточки
 
 function createNewCard(data) {
-  const card = new Card(data, ".template-card");
+  const card = new Card(data, ".template-card", createImageModal);
   const cardElement = card.generateCard();
   list.prepend(cardElement);
 }
 
-
 function addCardSubmitHandler(event) {
   event.preventDefault();
-  createNewCard({name:inputPlace.value, link:inputImageSource.value});
+  createNewCard({ name: inputPlace.value, link: inputImageSource.value });
   closeModalWindow(addCardsModal);
   addCardsForm.reset();
-  
 }
 
 initialCards.forEach((data) => {
-  createNewCard(data)
+  createNewCard(data);
 });
-
-
 
 // Тыкаем на кнопки для модалки edit
 editProfileButton.addEventListener("click", () => {
@@ -162,48 +152,15 @@ closeAddCardsModalModalButton.addEventListener("click", () => {
 popup.addEventListener("submit", saveInfo);
 addCardsModal.addEventListener("submit", addCardSubmitHandler);
 
+function createImageModal(data) {
+  openModalWindow(imageModal);
+  imageModalSrc.src = data.link;
+  imageModalTitle.textContent = data.name;
+}
 
-// function createImageModal(src, textcontent) {
-//   imageModalSrc.src = src;
-//   imageModalTitle.textContent = textcontent; 
-// }
-
-
-
-
+closeImageModalButton.addEventListener("click", () => {
+  closeModalWindow(imageModal);
+});
 
 const addFormValidator = new FormValidator(settings, popup);
 addFormValidator.enableValidation();
-
-
-
-
-
-// function openImage() {
-//   imageModalSrc.src = src;
-//   imageModalTitle.textContent = textcontent; 
-
-//   gridImage.addEventListener("click", () => {
-//         openModalWindow(imageModal);
-//         createImageModal(data.link, data.name);
-//       });
-//       closeImageModalButton.addEventListener("click", () => {
-//         closeModalWindow(imageModal);
-//       });
-// }
-
-// openImage();
-
-//  
-
-//   return gridElement;
-// }
-
-// function renderCard(data) {
-//   list.prepend(createCard(data));
-// }
-
-// initialCards.forEach((data) => {
-//   renderCard(data);
-// });
-
