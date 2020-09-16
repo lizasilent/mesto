@@ -42,6 +42,7 @@ const settings = {
   errorClass: "popup__error_is-active",
 };
 
+
 //Modals
 const editProfileModal = document.querySelector(".popup_type_edit-profile");
 const addCardsModal = document.querySelector(".popup_type_add-cards");

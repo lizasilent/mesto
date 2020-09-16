@@ -19,25 +19,25 @@ class Card {
     this._element = this._getTemplate();
     this._setEventListeners();
 
-    const cardImage = this._element.querySelector(".grid__image");
-    const cardTitle = this._element.querySelector(".grid__text");
+    this._cardImage = this._element.querySelector(".grid__image");
+    this._cardTitle = this._element.querySelector(".grid__text");
+    this._cardLikeBtn = this._element.querySelector(".grid__like-btn");
+    this._cardDeleteBtn = this._element.querySelector(".grid__delete-btn");
+    
+    
 
-    cardImage.src = this._image;
-    cardTitle.textContent = this._title;
+    this._cardImage.src = this._image;
+    this._cardTitle.textContent = this._title;
 
     return this._element;
   }
 
   _handleLikeClick() {
-    this._element
-      .querySelector(".grid__like-btn")
-      .classList.toggle("grid__like_active-btn");
+    this._cardLikeBtn.classList.toggle("grid__like_active-btn");
   }
 
   _handleDeleteClick() {
-    this._element
-      .querySelector(".grid__delete-btn")
-      .closest(".grid__item")
+    this._cardDeleteBtn.closest(".grid__item")
       .remove();
   }
 
