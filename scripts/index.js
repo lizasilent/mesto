@@ -59,7 +59,6 @@ const inputDescription = editProfileModal.querySelector(
 const inputPlace = addCardsModal.querySelector(".popup__text_place");
 const inputImageSource = addCardsModal.querySelector(".popup__source");
 const list = document.querySelector(".grid__template");
-const gridElement = list.querySelector(".grid__item");
 const imageModalSrc = imageModal.querySelector(".popup__image");
 const imageModalTitle = imageModal.querySelector(".popup__title");
 const addCardsForm = addCardsModal.querySelector(".popup__form_add-cards");
@@ -105,9 +104,6 @@ imageModal.addEventListener("click", closeModalByOverlay);
 
 //Сохраняем введенную информацию
 
-inputName.value = userName.textContent;
-inputDescription.value = userInformation.textContent;
-
 function saveInfo(event) {
   event.preventDefault();
   userName.textContent = inputName.value;
@@ -137,7 +133,10 @@ initialCards.forEach((data) => {
 // Тыкаем на кнопки для модалки edit
 editProfileButton.addEventListener("click", () => {
   openModalWindow(editProfileModal);
+  inputName.value = userName.textContent;
+  inputDescription.value = userInformation.textContent;
 });
+
 closeEditProfileModalButton.addEventListener("click", () => {
   closeModalWindow(editProfileModal);
 });
@@ -153,6 +152,7 @@ closeAddCardsModalModalButton.addEventListener("click", () => {
 popup.addEventListener("submit", saveInfo);
 addCardsModal.addEventListener("submit", addCardSubmitHandler);
 
+
 function createImageModal(data) {
   openModalWindow(imageModal);
   imageModalSrc.src = data.link;
@@ -163,5 +163,10 @@ closeImageModalButton.addEventListener("click", () => {
   closeModalWindow(imageModal);
 });
 
-const addFormValidator = new FormValidator(settings, popup);
-addFormValidator.enableValidation();
+const addInfoValidator = new FormValidator(settings, editProfileModal);
+addInfoValidator.enableValidation();
+
+const addCardValidator = new FormValidator(settings, addCardsModal);
+addCardValidator.enableValidation();
+
+console.log(addCardValidator);
