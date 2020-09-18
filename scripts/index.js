@@ -153,20 +153,26 @@ popup.addEventListener("submit", saveInfo);
 addCardsModal.addEventListener("submit", addCardSubmitHandler);
 
 
+
+// Создание попапа с картинкой
+
 function createImageModal(data) {
   openModalWindow(imageModal);
   imageModalSrc.src = data.link;
   imageModalTitle.textContent = data.name;
+  imageModalSrc.alt = data.name;
 }
+
+
 
 closeImageModalButton.addEventListener("click", () => {
   closeModalWindow(imageModal);
+
 });
 
+
+// Классы валидации
 const addInfoValidator = new FormValidator(settings, editProfileModal);
 addInfoValidator.enableValidation();
-
 const addCardValidator = new FormValidator(settings, addCardsModal);
 addCardValidator.enableValidation();
-
-console.log(addCardValidator);

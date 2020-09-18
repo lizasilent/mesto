@@ -23,10 +23,9 @@ class Card {
     this._cardTitle = this._element.querySelector(".grid__text");
     this._cardLikeBtn = this._element.querySelector(".grid__like-btn");
     this._cardDeleteBtn = this._element.querySelector(".grid__delete-btn");
-    
-    
 
     this._cardImage.src = this._image;
+    this._cardImage.alt = this._title;
     this._cardTitle.textContent = this._title;
 
     return this._element;
