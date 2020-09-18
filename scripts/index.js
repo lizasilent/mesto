@@ -164,7 +164,6 @@ function createImageModal(data) {
 }
 
 
-
 closeImageModalButton.addEventListener("click", () => {
   closeModalWindow(imageModal);
 
