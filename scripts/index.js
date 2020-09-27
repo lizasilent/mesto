@@ -1,5 +1,8 @@
+import Section from "./Section.js";
 import Card from "./Card.js";
+// import Popup from "./Popup";
 import FormValidator from "./FormValidator.js";
+
 
 const initialCards = [
   {
@@ -31,7 +34,7 @@ const initialCards = [
     name: "Байкал",
     link:
       "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
+  }
 ];
 
 const settings = {
@@ -74,6 +77,8 @@ const closeAddCardsModalModalButton = addCardsModal.querySelector(
 );
 const closeImageModalButton = imageModal.querySelector(".popup__close-btn");
 
+
+
 //Открываем и закрываем модалки
 function openModalWindow(modalWindow) {
   modalWindow.classList.add("popup_is-open");
@@ -113,22 +118,37 @@ function saveInfo(event) {
 
 // Создаем карточки
 
-function createNewCard(data) {
-  const card = new Card(data, ".template-card", createImageModal);
-  const cardElement = card.generateCard();
-  list.prepend(cardElement);
-}
+// function createNewCard(data) {
+//   const card = new Card(data, ".template-card", createImageModal);
+//   const cardElement = card.generateCard();
+//   list.prepend(cardElement);
+// }
 
-function addCardSubmitHandler(event) {
-  event.preventDefault();
-  createNewCard({ name: inputPlace.value, link: inputImageSource.value });
-  closeModalWindow(addCardsModal);
-  addCardsForm.reset();
-}
+// function addCardSubmitHandler(event) {
+//   event.preventDefault();
+//   createNewCard({ name: inputPlace.value, link: inputImageSource.value });
+//   closeModalWindow(addCardsModal);
+//   addCardsForm.reset();
+// }
 
-initialCards.forEach((data) => {
-  createNewCard(data);
-});
+// initialCards.forEach((data) => {
+//   createNewCard(data);
+// });
+
+
+const cardList = new Section({
+  data: initialCards,
+  renderer: (item) => {
+    const card = new Card(item, ".template-card", createImageModal);
+    const cardElement = card.generateCard();
+    list.prepend(cardElement);}
+  },
+  ".template-card"
+);
+
+cardList.renderItems();
+
+
 
 // Тыкаем на кнопки для модалки edit
 editProfileButton.addEventListener("click", () => {
@@ -163,10 +183,8 @@ function createImageModal(data) {
   imageModalSrc.alt = data.name;
 }
 
-
 closeImageModalButton.addEventListener("click", () => {
   closeModalWindow(imageModal);
-
 });
 
 
@@ -175,3 +193,4 @@ const addInfoValidator = new FormValidator(settings, editProfileModal);
 addInfoValidator.enableValidation();
 const addCardValidator = new FormValidator(settings, addCardsModal);
 addCardValidator.enableValidation();
+
