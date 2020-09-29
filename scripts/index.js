@@ -1,9 +1,10 @@
 import Section from "./Section.js";
 import Card from "./Card.js";
-import Popup from "./Popup.js";
+// import Popup from "./Popup.js";
 import PopupWithImage from "./PopupWithImage.js";
 import PopupWithForm from "./PopupWithForm.js";
 import FormValidator from "./FormValidator.js";
+import UserInfo from "./UserInfo.js";
 
 
 const initialCards = [
@@ -78,12 +79,6 @@ const closeAddCardsModalModalButton = addCardsModal.querySelector(
   ".popup__close-btn"
 );
 const closeImageModalButton = imageModal.querySelector(".popup__close-btn");
-
-
-// cardImage = document.querySelector(".grid__image");
-// const newImagePopup = new PopupWithImage(imageModal);
-// cardImage.addEventListener("click", newImagePopup);
-
 
 
 // //Открываем и закрываем модалки
@@ -170,12 +165,12 @@ const closeImageModalButton = imageModal.querySelector(".popup__close-btn");
 
 // Создание попапа с картинкой
 
-function createImageModal(data) {
-  openModalWindow(imageModal);
-  imageModalSrc.src = data.link;
-  imageModalTitle.textContent = data.name;
-  imageModalSrc.alt = data.name;
-}
+// function createImageModal(data) {
+//   openModalWindow(imageModal);
+//   imageModalSrc.src = data.link;
+//   imageModalTitle.textContent = data.name;
+//   imageModalSrc.alt = data.name;
+// }
 
 // closeImageModalButton.addEventListener("click", () => {
 //   closeModalWindow(imageModal);
@@ -189,21 +184,82 @@ function createImageModal(data) {
 // addCardValidator.enableValidation();
 
 
-//Класс создания разметки
-const cardList = new Section({
-  data: initialCards,
-  renderer: (item) => {
-    const card = new Card(item, ".template-card", createImageModal);
-    const cardElement = card.generateCard();
-    list.prepend(cardElement);}
-  },
-  ".template-card"
-);
+//Добавление карточки
+
+const addCard = (item) => {
+  const card = new Card({
+      data: item,
+      cardSelector: ".template-card",
+      handleCardClick: (name, link) => {
+          popupWithImage.open(name, link)
+      }
+  }).generateCard();
+  list.prepend(card);
+}
+
+
+// //Класс создания разметки
+
+const cardList = new Section( {data: initialCards, renderer: (data) => {addCard(data);}},
+  ".template-card");
 
 cardList.renderItems();
 
+ const userInfo = new UserInfo(
+   {nameSelector: ".profile__name", 
+   userInfoSelector: ".profile__description"}) 
 
-// Классы попапов
 
-const newPopup = new Popup(imageModal);
-// const newPopupImage = new PopupWithImage(imageModal);
+//Создание попапа с картинкой
+
+const imagePopup = new PopupWithImage('.popup_type_image');
+imagePopup.setEventListeners();
+
+
+//Создание попапа для изменения инфы профиля
+
+const editProfilePopup = new PopupWithForm({
+  popupSelector:  ".popup_type_edit-profile", 
+  formSubmitCallback: (data) => {
+    userInfo.setUserInfo(data);
+    editProfilePopup.close();},
+
+   setFormInputs: formElement => {
+    formElement.name.value = userInfo.getUserInfo().name;
+    formElement.description.value = userInfo.getUserInfo().description;
+  }
+});
+
+editProfilePopup.setEventListeners();
+editProfileButton.addEventListener("click", () => {
+  editProfilePopup.open();
+  editFormValidator.enableValidation();
+})
+
+
+//Создание попапа с добавлением карточки
+
+const addCardPopup = new PopupWithForm({
+  popupSelector:  ".popup_type_add-cards", 
+  formSubmitCallback: (data) => {
+    addCard(item),
+
+    addCardPopup.close();
+  }
+});
+
+addCardPopup.setEventListeners();
+addCardButton.addEventListener("click", () => {
+  addCardPopup.open();
+  addCardFormValidator.enableValidation();
+});
+
+
+
+const addCardPopupForm = document.querySelector(".popup_type_add-cards").querySelector('.popup__form');
+const addCardFormValidator = new FormValidator(settings, addCardPopupForm);
+addCardFormValidator.enableValidation();
+
+const editProfilePopupForm = document.querySelector('.popup_type_edit-profile').querySelector('.popup__form');
+const editFormValidator = new FormValidator(settings, editProfilePopupForm);
+editFormValidator.enableValidation();
