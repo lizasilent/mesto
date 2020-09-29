@@ -197,7 +197,6 @@ const addCard = (item) => {
   list.prepend(card);
 }
 
-
 // //Класс создания разметки
 
 const cardList = new Section( {data: initialCards, renderer: (data) => {addCard(data);}},
@@ -236,6 +235,10 @@ editProfileButton.addEventListener("click", () => {
   editFormValidator.enableValidation();
 })
 
+const editProfilePopupForm = document.querySelector('.popup_type_edit-profile').querySelector('.popup__form');
+const editFormValidator = new FormValidator(settings, editProfilePopupForm);
+editFormValidator.enableValidation();
+
 
 //Создание попапа с добавлением карточки
 
@@ -255,11 +258,7 @@ addCardButton.addEventListener("click", () => {
 });
 
 
-
 const addCardPopupForm = document.querySelector(".popup_type_add-cards").querySelector('.popup__form');
 const addCardFormValidator = new FormValidator(settings, addCardPopupForm);
 addCardFormValidator.enableValidation();
 
-const editProfilePopupForm = document.querySelector('.popup_type_edit-profile').querySelector('.popup__form');
-const editFormValidator = new FormValidator(settings, editProfilePopupForm);
-editFormValidator.enableValidation();
