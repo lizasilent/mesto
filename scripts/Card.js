@@ -56,7 +56,7 @@ export default class Card {
     this._element
       .querySelector(".grid__image")
       .addEventListener("click", () => {
-        this._createPopup({ name: this._title, link: this._image });
+        this._handleCardClick(this._title,  this._image);
       });
   }
 }
