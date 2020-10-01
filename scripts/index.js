@@ -42,7 +42,7 @@ const userInfo = new UserInfo({
 );
 
 
-const imagePopup = new PopupWithImage('.popup_type_image');
+const imagePopup = new PopupWithImage(".popup_type_grid-img");
 imagePopup.setEventListeners();
 
 
@@ -65,7 +65,7 @@ editProfileButton.addEventListener('click', () => {
 });
 
 const addCardPopup = new PopupWithForm({
-  popupSelector: '.popup_type_add-card',
+  popupSelector: ".popup_type_add-cards",
   formSubmitHandler: (data) => {
       addCard({
           name: data[`place`],
@@ -81,7 +81,7 @@ addCardButton.addEventListener('click', () => {
   addCardFormValidator.checkFormState()
 })
 
-const addPopupForm = document.querySelector(".popup_type_add-card").querySelector(".popup__form");
+const addPopupForm = document.querySelector(".popup_type_add-cards").querySelector(".popup__form");
 const addCardFormValidator = new FormValidator(settings, addPopupForm);
 addCardFormValidator.enableValidation();
 
