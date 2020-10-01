@@ -31,11 +31,6 @@ export default class Popup {
                     this.close();
                 }
             });
-
-<<<<<<< HEAD
-=======
-            this._popup.addEventListener("keydown", this._handleEscClose(evt))
->>>>>>> 4ded4217c6d035b3df27166ca48bc5b6e8ff936c
         }
 }
 
