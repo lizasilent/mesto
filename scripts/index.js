@@ -76,8 +76,8 @@ const addCardPopup = new PopupWithForm({
   popupSelector: ".popup_type_add-cards",
   formSubmitCallback: (data) => {
       addCard({
-          name: data[`name`],
-          link: data[`link`]
+        name: data["image-title"],
+        link: data["image-src"]
       });
       addCardPopup.close();
   }
@@ -85,7 +85,7 @@ const addCardPopup = new PopupWithForm({
 
 
 addCardPopup.setEventListeners();
-addCardButton.addEventListener('click', () => {
+addCardButton.addEventListener("click", () => {
   addCardPopup.open();
   addCardFormValidator.enableValidation();
 })
