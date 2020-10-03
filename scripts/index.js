@@ -35,51 +35,64 @@ const cardList = new Section({
 cardList.renderItems();
 
 
-const userInfo = new UserInfo({
-  nameSelector: ".profile__name",
-  jobSelector: ".profile__description"
-  }
-);
-
+// Попап-картинка 
 
 const imagePopup = new PopupWithImage(".popup_type_grid-img");
 imagePopup.setEventListeners();
 
 
+//Активация класса-акцептора информации
+
+const userInfo = new UserInfo({
+  userNameSelector: ".profile__name",
+  userInfoSelector: ".profile__description"
+  }
+);
+
+//Попап-редактор инфы
+
 const editProfilePopup = new PopupWithForm ({
   popupSelector: ".popup_type_edit-profile",
-  formSubmitHandler: (data) => {
+  formSubmitCallback: (data) => {
   userInfo.setUserInfo(data);
   editProfilePopup.close();
 },
   setFormInputs: formElement => {
   formElement.name.value = userInfo.getUserInfo().name;
-  formElement.job.value = userInfo.getUserInfo().job;
+  formElement.description.value = userInfo.getUserInfo().description;
 }
 });
 
 editProfilePopup.setEventListeners();
 editProfileButton.addEventListener('click', () => {
   editProfilePopup.open();
-  editFormValidator.checkFormState();
+  editFormValidator.enableValidation();
 });
 
+
+
+// Попап для добавления картинки
 const addCardPopup = new PopupWithForm({
   popupSelector: ".popup_type_add-cards",
-  formSubmitHandler: (data) => {
+  formSubmitCallback: (data) => {
       addCard({
-          name: data[`place`],
-          link: data[`image`]
+          name: data[`name`],
+          link: data[`link`]
       });
       addCardPopup.close();
   }
 })
 
+
 addCardPopup.setEventListeners();
 addCardButton.addEventListener('click', () => {
-  addCardPopup.open()
-  addCardFormValidator.checkFormState()
+  addCardPopup.open();
+  addCardFormValidator.enableValidation();
 })
+
+
+
+// Классы валидации форм
 
 const addPopupForm = document.querySelector(".popup_type_add-cards").querySelector(".popup__form");
 const addCardFormValidator = new FormValidator(settings, addPopupForm);
