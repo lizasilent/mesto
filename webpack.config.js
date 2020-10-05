@@ -25,7 +25,10 @@ module.exports = {
             test: /.(eot|ttf|woff|woff2)$/,
             loader: 'file-loader?name=./vendor/[name].[ext]'
           },
-
+          {
+            test: /\.html$/,
+            loader: 'html-loader'
+          },
           {
             test: /\.css$/,
             loader:  [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
