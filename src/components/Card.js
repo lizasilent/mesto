@@ -1,9 +1,10 @@
 export default class Card {
-  constructor({data, cardSelector, handleCardClick}) {
+  constructor({data, cardSelector, handleCardClick, openSubmitPopup}) {
     this._image = data.link;
     this._title = data.name;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
+    this.openSubmitPopup = openSubmitPopup;
   }
 
   _getTemplate() {
@@ -36,6 +37,7 @@ export default class Card {
   }
 
   _handleDeleteClick() {
+
     this._cardDeleteBtn.closest(".grid__item")
       .remove();
   }
