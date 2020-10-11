@@ -1,5 +1,4 @@
 .profile__avatar {
-  background-image: url(../../../images/gudetama.jpg);
   background-repeat: no-repeat;
   background-position: center;
   width: 120px;
@@ -28,9 +27,7 @@
 
 @media screen and (max-width: 523px) {
   .profile__avatar {
-    /* box-sizing: border-box; */
     margin: 0;
     padding-bottom: 14px;
-    max-height: 100px;
   }
 }
