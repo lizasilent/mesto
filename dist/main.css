@@ -703,7 +703,7 @@ opacity: 0.8;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   padding: 25px 21px;
   margin-top: -5px;
 }
@@ -717,6 +717,11 @@ opacity: 0.8;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 200px;
+}
+.grid__like-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .grid__like-btn {
