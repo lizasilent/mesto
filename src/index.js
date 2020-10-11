@@ -1,27 +1,27 @@
 import "./pages/index.css";
 import { initialCards, settings } from "./components/initials.js";
-import Api from "./components/Api.js"
+// import Api from "./components/Api.js"
 import Card from "./components/Card.js";
 import Section from "./components/Section.js";
 import PopupWithImage from "./components/PopupWithImage.js";
 import PopupWithForm from "./components/PopupWithForm.js";
 import FormValidator from "./components/FormValidator.js";
 import UserInfo from "./components/UserInfo.js";
-import PopupWithSubmit from "./components/PopupWithSubmit";
+// import PopupWithSubmit from "./components/PopupWithSubmit";
 
 
 const editProfileButton = document.querySelector(".profile__edit-btn");
 const addCardButton = document.querySelector(".profile__add-btn");
 const list = document.querySelector(".grid__template");
 
-const api = new Api({
-baseUrl: "https://mesto.nomoreparties.co/v1/cohort-16",
-headers: {
-  authorization: '9a08681-995b-4f4f-93e1-9a39f0f490cc',
-  "content-type": "application/json"
-}
+// const api = new Api({
+// baseUrl: "https://mesto.nomoreparties.co/v1/cohort-16",
+// headers: {
+//   authorization: '9a08681-995b-4f4f-93e1-9a39f0f490cc',
+//   "content-type": "application/json"
+// }
 
-})
+// })
 
 
 const addCard = (item) => {
