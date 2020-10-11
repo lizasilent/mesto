@@ -1,34 +1,34 @@
 
 const initialCards = [
   {
-    name: "Архыз",
+    name: "Sad",
     link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
+      "https://sanrio-production-weblinc.netdna-ssl.com/media/W1siZiIsIjIwMTcvMDUvMjIvMTYvNDUvNTMvNDI3L0dVXzEyMDB4MTIwMF9CT0RZX0IuanBnIl0sWyJwIiwib3B0aW0iXV0/GU_1200x1200_BODY_B.jpg?sha=430cbb5a9d62fd64",
   },
   {
-    name: "Челябинская область",
+    name: "Sleepy",
     link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
+      "https://i.pinimg.com/originals/9d/c2/d2/9dc2d2c95066222612457db203376bf4.png",
   },
   {
-    name: "Иваново",
+    name: "Funny",
     link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
+      "https://i.pinimg.com/originals/da/20/96/da20960ee0b8d63b3ab6521c2f0c6052.jpg",
   },
   {
-    name: "Камчатка",
+    name: "Tired",
     link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
+      "https://avatars.mds.yandex.net/get-zen_doc/195350/pub_5b165eda00b3dd199f007169_5b1668a28cb59a0797a5c505/scale_1200",
   },
   {
-    name: "Холмогорский район",
+    name: "Relaxed",
     link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
+      "https://a.d-cd.net/f31b189s-960.jpg",
   },
   {
-    name: "Байкал",
+    name: "Cute",
     link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
+      "https://i.pinimg.com/originals/db/41/c9/db41c97afed66811ccebf4f4a07c497b.jpg",
   }
 ];
 
