@@ -1,5 +1,5 @@
 import "./pages/index.css";
-import { initialCards, settings } from "./components/initials.js";
+import { settings } from "./components/initials.js";
 import Api from "./components/Api.js";
 import Section from "./components/Section.js";
 import Card from "./components/Card.js";
