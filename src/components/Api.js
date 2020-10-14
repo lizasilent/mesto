@@ -31,25 +31,25 @@ export default class Api {
   
   
       //загрузить новую инфу о пользователе
-      patchUserInfo(name, description) {
+      patchUserInfo(data) {
         return fetch(`${this._baseUrl}/users/me`, {
           headers: this._headers,
           method: "PATCH",
           body: JSON.stringify({
-            name: name,
-            description: description,
+            name: data.name,
+            description: data.description,
           }),
         })
         .then(this._getServerAnswer)
       }
     
       //обновить аватар
-      patchAvatar({url}) {
+      patchAvatar(data) {
         return fetch(`${this._baseUrl}/users/me/avatar`, {
           headers: this._headers,
           method: "PATCH",
           body: JSON.stringify({
-            avatar: url,
+            avatar: data.avatar,
           }),
         })
         .then(this._getServerAnswer)
@@ -57,13 +57,13 @@ export default class Api {
     
 
       //добавить новую карточку
-      postNewCard(name, link) {
+      postNewCard(data) {
         return fetch(`${this._baseUrl}/cards`, {
           headers: this._headers,
           method: "POST",
           body: JSON.stringify({
-            name: name,
-            link: link,
+            name: data.name,
+            link: data.link,
           }),
         })
         .then(this._getServerAnswer)

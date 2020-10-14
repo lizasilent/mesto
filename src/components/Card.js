@@ -1,12 +1,18 @@
 export default class Card {
-  constructor({data, cardSelector, handleCardClick, openSubmitPopup}) {
-    this._image = data.link;
-    this._title = data.name;
+  constructor({data, userId, cardSelector, handleCardClick, handleDeleteCard, deleteLike, addLike}) {
+    this.data = data;
+    this._userId = userId;
+    this._cardId = data._id;
+    this._ownerId = data.owner._id;
+    this._likes = data.likes;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
-    this.openSubmitPopup = openSubmitPopup;
+    this._handleDeleteCard = handleDeleteCard;
+    this._deleteLike = deleteLike;
+    this._addLike = addLike;
   }
 
+  
   _getTemplate() {
     const cardElement = document
       .querySelector(this._cardSelector)
@@ -24,10 +30,12 @@ export default class Card {
     this._cardTitle = this._element.querySelector(".grid__text");
     this._cardLikeBtn = this._element.querySelector(".grid__like-btn");
     this._cardDeleteBtn = this._element.querySelector(".grid__delete-btn");
+    this._countLikes = this._element.querySelector(".grid__like-counter");
+    this._countLikes.textContent = this._likes.length;
 
-    this._cardImage.src = this._image;
-    this._cardImage.alt = this._title;
-    this._cardTitle.textContent = this._title;
+    this._cardImage.src = this.data.link;
+    this._cardImage.alt = this.data.name;
+    this._cardTitle.textContent = this.data.name;
 
     return this._element;
   }
@@ -36,10 +44,10 @@ export default class Card {
     this._cardLikeBtn.classList.toggle("grid__like_active-btn");
   }
 
-  _handleDeleteClick() {
-
-    this._cardDeleteBtn.closest(".grid__item")
-      .remove();
+  //метод удаляет карточки с фото
+  removeCard(){
+    this._element.remove();
+    this._element = null;
   }
 
   _setEventListeners() {
@@ -52,13 +60,13 @@ export default class Card {
     this._element
       .querySelector(".grid__delete-btn")
       .addEventListener("click", () => {
-        this._handleDeleteClick();
+        this.removeCard();
       });
 
     this._element
       .querySelector(".grid__image")
       .addEventListener("click", () => {
-        this._handleCardClick(this._title,  this._image);
+        this._handleCardClick(this._title, this._image);
       });
   }
 }
