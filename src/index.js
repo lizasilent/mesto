@@ -37,10 +37,8 @@ headers: {
 const cardList = new Section(
   {
     data: initialCards,
-    renderer: (data) => {
-      addCard(data);
+    renderer: addCard
     },
-  },
   ".template-card"
 );
 
