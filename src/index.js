@@ -26,13 +26,13 @@ headers: {
 }
 });
 
-function submitLoading(isLoading, button) {
-  if (isLoading) {
-    button.textContent = "Сохранение..";
-  } else {
-    button.textContent = "Сохранить";
-  }
-}
+// function submitLoading(isLoading, button) {
+//   if (isLoading) {
+//     button.textContent = "Сохранение..";
+//   } else {
+//     button.textContent = "Сохранить";
+//   }
+// }
 
 const cardList = new Section(
   {
