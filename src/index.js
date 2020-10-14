@@ -21,7 +21,7 @@ const profileAvatar = document.querySelector('.profile__avatar');
 const api = new Api({
 baseUrl: "https://mesto.nomoreparties.co/v1/cohort-16",
 headers: {
-  authorization: '9a08681-995b-4f4f-93e1-9a39f0f490cc',
+  authorization: "39a08681-995b-4f4f-93e1-9a39f0f490cc",
   "Content-Type": "application/json"
 }
 });
