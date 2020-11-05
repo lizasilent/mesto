@@ -27,8 +27,21 @@
           </section>
 
           <section class="grid">
-            <ul class="grid__template"></ul>
+            <ul class="grid__template">
+              <template class="template-card">
+                <li class="grid__item">
+                  <button class="grid__delete-btn" type="button"></button>
+                  <img src="#" alt="" class="grid__image">
+                  <div class="grid__text-container">
+                    <h2 class="grid__text"></h2>
+                    <button class="grid__like-btn" type="button"></button>
+                  </div>
+                </li>
+              </template>
+            </ul>
           </section>
+
+
         </main>
         <footer class="footer">
           <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
@@ -171,18 +184,6 @@
       </div>
     </div>
 
-    <template class="template-card">
-      <li class="grid__item">
-        <button class="grid__delete-btn" type="button"></button>
-        <img src="#" alt="" class="grid__image" />
-        <div class="grid__text-container">
-          <h2 class="grid__text"></h2>
-            <div class="grid__like-container">
-              <button class="grid__like-btn" type="button"></button>
-              <div class="grid__like-counter">0</div>
-            </div>
-        </div>
-      </li>
-    </template>
+    
   <script src="main.js"></script></body>
 </html>
