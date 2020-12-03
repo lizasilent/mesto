@@ -441,7 +441,9 @@ template {
 
 .profile__avatar {
   position: relative;
-  background: url(./images/gudetama.jpg) center no-repeat;
+  background-image: url(./images/gudetama.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
   width: 120px;
   height: 120px;
   border-radius: 50%;

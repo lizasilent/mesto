@@ -6,11 +6,12 @@ export default class Api {
 
         getInitialCards() {
           return this._fetch('/cards', 'GET')
+            .then((result) => result.reverse())
       }
   
       addUserCard(values) {
           return this._fetch('/cards', 'POST', JSON.stringify({
-              name: values.place,
+              name: values.name,
               link: values.link
           }))
       }
@@ -34,14 +35,13 @@ export default class Api {
       patchUserData(values) {
           return this._fetch('/users/me', 'PATCH', JSON.stringify({
               name: values.name,
-              about: values.job
+              about: values.description
           }))
-  
       }
   
       patchUserAvatar(values) {
           return this._fetch('/users/me/avatar', 'PATCH', JSON.stringify({
-              avatar: values.link
+              avatar: values['image-src']
           }))
       }
   

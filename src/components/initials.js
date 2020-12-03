@@ -1,5 +1,3 @@
-
-
 const settings = {
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__submit-btn",
