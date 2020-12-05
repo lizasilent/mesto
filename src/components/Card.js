@@ -78,6 +78,7 @@ _toggleCardLiked = () => {
 
   delCard = () => {
     this._element.remove();
+    this._element = null;
 }
 
 

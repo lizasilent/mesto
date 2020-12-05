@@ -16,7 +16,6 @@ const list = document.querySelector(".grid__template");
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
 
-
 let section
 const userInfo = new UserInfo({
   userNameSelector: ".profile__name",
@@ -35,6 +34,26 @@ headers: {
 });
 
 
+// Загрузка карточек с сервера
+
+const loadCards = () => {
+  api.getInitialCards().then((result) => {
+      section = new Section({
+          data: result,
+          renderer: (data) => {
+              addCard(data);
+          }
+        },
+         ".template-card");
+        section.renderItems();
+
+
+  }).catch((err) => {
+    console.log("Не загрузились карточки: " + err);
+  });
+}
+
+
 // Карточка и все что внутри неё
 
 const addCard = (result) => {
@@ -47,8 +66,12 @@ const addCard = (result) => {
       handleDelCard,
       handleLikeCard
   }).generateCard();
+
   list.prepend(card);
+
 }
+
+
 
 
 const handleCardClick = (name, link) => {
@@ -61,6 +84,7 @@ const handleDelCard = (card) => {
   })
   delPopup.open()
 }
+
 
 const handleLikeCard = (card) => {
   const handleLikeResponse = (res) => {
@@ -80,7 +104,10 @@ if (!card.getCardLiked()) {
 // Попап с удалением карточки
 
 const delSubmitHandler = (card) => {
-  api.delCard(card.getCardId()).then(() => card.delCard()).catch((err) => {
+  api.delCard(card.getCardId()).then(() => 
+  card.delCard(),
+  delPopup.close()
+  ).catch((err) => {
       console.log(err);
   })
 }
@@ -131,25 +158,7 @@ const addCardSubmitHandler = (data) => {
 }
 
 
-// Загрузка карточек с сервера
 
-const loadCards = () => {
-  api.getInitialCards().then((result) => {
-      section = new Section({
-          data: result,
-          renderer: (data) => {
-              addCard(data);
-          }
-        },
-         ".template-card");
-
-        section.renderItems();
-
-  }).catch((err) => {
-    console.log("Не загрузились карточки: " + err);
-      
-  });
-}
 
 // Загрузка инфы пользователя с сервера
 
