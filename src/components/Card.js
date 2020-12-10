@@ -25,8 +25,8 @@ export default class Card {
   _getTemplate() {
     const cardElement = document
       .querySelector(this._cardSelector)
-      .content.querySelector(".grid__item")
-      .cloneNode(true);
+      .content
+      .cloneNode(true).firstElementChild;
 
     return cardElement;
   }
@@ -40,6 +40,7 @@ export default class Card {
     this._cardLikeBtn = this._element.querySelector(".grid__like-btn");
     this._cardDeleteBtn = this._element.querySelector(".grid__delete-btn");
     this._cardLikeCounter = this._element.querySelector(".grid__like-counter");
+
     this._cardLikeCounter.textContent = this._likes.length;
     this._cardLikeBtn.addEventListener('click', this._cardLiked)
     this._cardImage.src = this._image;
@@ -48,11 +49,12 @@ export default class Card {
 
     if (!this.owned) {
       this._cardDeleteBtn.style.display = "none";
-  }
+    }
 
     if (this._liked) {
       this._cardLikeBtn.classList.add("grid__like_active-btn");
-  }
+    }
+
     return this._element;
   }
 

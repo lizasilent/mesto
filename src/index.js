@@ -40,24 +40,20 @@ const loadCards = () => {
   api.getInitialCards().then((result) => {
       section = new Section({
           data: result,
-          renderer: (data) => {
-              addCard(data);
-          }
+          renderer: addCard
         },
-         ".template-card");
+        ".grid__template");
         section.renderItems();
-
 
   }).catch((err) => {
     console.log("Не загрузились карточки: " + err);
   });
 }
 
-
 // Карточка и все что внутри неё
 
 const addCard = (result) => {
-  const card = new Card({
+  return new Card({
       data: result,
       cardSelector: ".template-card",
       handleCardClick,
@@ -66,12 +62,7 @@ const addCard = (result) => {
       handleDelCard,
       handleLikeCard
   }).generateCard();
-
-  list.prepend(card);
-
 }
-
-
 
 
 const handleCardClick = (name, link) => {
