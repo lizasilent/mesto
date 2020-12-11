@@ -95,12 +95,12 @@ if (!card.getCardLiked()) {
 // Попап с удалением карточки
 
 const delSubmitHandler = (card) => {
-  api.delCard(card.getCardId()).then(() => 
-  card.delCard(),
-  delPopup.close()
-  ).catch((err) => {
-      console.log(err);
-  })
+  api.delCard(card.getCardId()).then(() => {
+    card.delCard();
+    delPopup.close();
+}).catch((err) => { 
+      console.log(err); 
+}) 
 }
   
 
@@ -168,8 +168,8 @@ const loadUser = () => {
 
 const openEditPopup = () => {
   const userData = userInfo.getUserInfo()
-  profileName.value = userData.name;
-  profileDescription.value = userData.about;
+  profileName.textContent = userData.name;
+  profileDescription.textContent = userData.about; 
   editProfilePopup.open();
 }
 
